@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\AdminPasswordResetController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,20 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/{product}', 'update')->name('products.update');
             Route::delete('/{product}', 'destroy')->name('products.destroy');
             Route::put('/order/update', 'updateOrder')->name('products.order.update');
+        });
+
+    // Settings Module
+    Route::controller(SettingController::class)
+        ->prefix('settings')
+        ->group(function () {
+            Route::get('/', 'index')->name('settings.index');
+            Route::post('/', 'store')->name('settings.store');
+            Route::get('/{setting}', 'show')->name('settings.show');
+            Route::put('/{setting}', 'update')->name('settings.update');
+            Route::delete('/{setting}', 'destroy')->name('settings.destroy');
+            Route::get('/group/{group}', 'getByGroup')->name('settings.group');
+            Route::get('/public/all', 'getPublic')->name('settings.public');
+            Route::put('/bulk/update', 'bulkUpdate')->name('settings.bulk.update');
         });
 
     // Admins Module
