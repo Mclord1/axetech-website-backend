@@ -7,7 +7,35 @@
   - Products Module for future product teasers
   - Settings Module for contact information
   - Testimonials Module for client feedback
-  - Common features: validation, pagination, filtering, and documentation
+
+## [0.7.0] - 2024-02-26
+### Added
+- Common Features Implementation
+  - Added global error handler for consistent API responses
+  - Implemented proper error handling for all exceptions:
+    - Authentication errors (401)
+    - Validation errors (422)
+    - Resource not found errors (404)
+    - Method not allowed errors (405)
+    - Database errors (500)
+  - Created BaseSeeder for consistent database seeding
+    - Added safe seeding with transaction handling
+    - Added utility methods for generating test data
+  - Updated database seeders for all modules
+    - Settings seeder with company, contact, and social media settings
+    - Testimonials seeder with sample client feedback
+  - Added comprehensive API documentation
+  - Implemented pagination, sorting, and filtering across all modules
+
+## [0.6.0] - 2024-02-26
+### Added
+- Testimonials Module Implementation
+  - Created Testimonial model with fields for client_name, company, position, content, rating, image
+  - Implemented CRUD endpoints with validation
+  - Added rating system (1-5 stars)
+  - Added order management for display priority
+  - Added visibility control
+  - Updated API documentation and Postman collection
 
 ## [0.5.0] - 2024-02-26
 ### Added
