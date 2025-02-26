@@ -1,0 +1,12 @@
+{
+    "name": "AxeTech API - Production",
+    "values": [
+        {
+            "key": "base_url",
+            "value": "https://api.axetech.io",
+            "type": "string",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment"
+}
