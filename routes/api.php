@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AdminPasswordResetController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ use App\Http\Controllers\SettingController;
 | /api/projects/* - Project endpoints (protected)
 | /api/services/* - Service endpoints (protected)
 | /api/admins/* - Admin management endpoints (protected)
+| /api/settings/* - Settings management endpoints (protected)
+| /api/testimonials/* - Testimonial management endpoints (protected)
 |
 */
 
@@ -88,6 +91,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/group/{group}', 'getByGroup')->name('settings.group');
             Route::get('/public/all', 'getPublic')->name('settings.public');
             Route::put('/bulk/update', 'bulkUpdate')->name('settings.bulk.update');
+        });
+
+    // Testimonials Module
+    Route::controller(TestimonialController::class)
+        ->prefix('testimonials')
+        ->group(function () {
+            Route::get('/', 'index')->name('testimonials.index');
+            Route::post('/', 'store')->name('testimonials.store');
+            Route::get('/{testimonial}', 'show')->name('testimonials.show');
+            Route::put('/{testimonial}', 'update')->name('testimonials.update');
+            Route::delete('/{testimonial}', 'destroy')->name('testimonials.destroy');
+            Route::put('/order/update', 'updateOrder')->name('testimonials.order.update');
         });
 
     // Admins Module
