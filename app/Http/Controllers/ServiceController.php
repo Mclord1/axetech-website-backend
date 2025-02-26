@@ -7,7 +7,8 @@ use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\Service\StoreServiceRequest;
+use App\Http\Requests\Service\UpdateServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -33,21 +34,9 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(StoreServiceRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services',
-            'description' => 'required|string',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|string|max:255',
-            'features' => 'nullable|array',
-            'features.*' => 'required|string',
-            'order' => 'nullable|integer|min:0',
-            'is_visible' => 'nullable|boolean',
-        ]);
-
-        $service = Service::create($validated);
+        $service = Service::create($request->validated());
 
         return $this->successResponse(
             $service,
@@ -67,21 +56,9 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service): JsonResponse
+    public function update(UpdateServiceRequest $request, Service $service): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('services')->ignore($service->id)],
-            'description' => 'required|string',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|string|max:255',
-            'features' => 'nullable|array',
-            'features.*' => 'required|string',
-            'order' => 'nullable|integer|min:0',
-            'is_visible' => 'nullable|boolean',
-        ]);
-
-        $service->update($validated);
+        $service->update($request->validated());
 
         return $this->successResponse(
             $service,

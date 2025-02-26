@@ -946,6 +946,279 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Products",
+            "description": "Product management endpoints",
+            "item": [
+                {
+                    "name": "List Products",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/products?per_page=10&status=published&visible=true",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "published",
+                                    "description": "Filter by status (draft, coming_soon, published)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "visible",
+                                    "value": "true",
+                                    "description": "Filter by visibility",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get paginated list of products"
+                    }
+                },
+                {
+                    "name": "Get Product",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/products/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Product ID"
+                                }
+                            ]
+                        },
+                        "description": "Get a specific product by ID"
+                    }
+                },
+                {
+                    "name": "Create Product",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"AI Assistant\",\n    \"description\": \"Advanced AI assistant for developers\",\n    \"image\": \"ai-assistant.jpg\",\n    \"features\": [\n        \"Natural language processing\",\n        \"Code generation\",\n        \"Automated testing\"\n    ],\n    \"status\": \"coming_soon\",\n    \"launch_date\": \"2024-12-31\",\n    \"teaser_content\": \"Experience the future of development with our AI assistant\",\n    \"is_visible\": true,\n    \"order\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/products",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products"
+                            ]
+                        },
+                        "description": "Create a new product"
+                    }
+                },
+                {
+                    "name": "Update Product",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated AI Assistant\",\n    \"description\": \"Updated advanced AI assistant for developers\",\n    \"image\": \"updated-ai-assistant.jpg\",\n    \"features\": [\n        \"Updated natural language processing\",\n        \"Updated code generation\",\n        \"Updated automated testing\"\n    ],\n    \"status\": \"published\",\n    \"launch_date\": \"2024-06-30\",\n    \"teaser_content\": \"Updated: Experience the future of development with our AI assistant\",\n    \"is_visible\": true,\n    \"order\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/products/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Product ID to update"
+                                }
+                            ]
+                        },
+                        "description": "Update an existing product"
+                    }
+                },
+                {
+                    "name": "Delete Product",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/products/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Product ID to delete"
+                                }
+                            ]
+                        },
+                        "description": "Delete a product"
+                    }
+                },
+                {
+                    "name": "Update Product Order",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"products\": [\n        {\n            \"id\": 1,\n            \"order\": 2\n        },\n        {\n            \"id\": 2,\n            \"order\": 1\n        }\n    ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/products/order/update",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "products",
+                                "order",
+                                "update"
+                            ]
+                        },
+                        "description": "Update the display order of products"
+                    }
+                }
+            ]
         }
     ],
     "variable": [

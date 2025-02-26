@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\AdminPasswordResetController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,18 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/{service}', 'update')->name('services.update');
             Route::delete('/{service}', 'destroy')->name('services.destroy');
             Route::put('/order/update', 'updateOrder')->name('services.order.update');
+        });
+
+    // Products Module
+    Route::controller(ProductController::class)
+        ->prefix('products')
+        ->group(function () {
+            Route::get('/', 'index')->name('products.index');
+            Route::post('/', 'store')->name('products.store');
+            Route::get('/{product}', 'show')->name('products.show');
+            Route::put('/{product}', 'update')->name('products.update');
+            Route::delete('/{product}', 'destroy')->name('products.destroy');
+            Route::put('/order/update', 'updateOrder')->name('products.order.update');
         });
 
     // Admins Module
