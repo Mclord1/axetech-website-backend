@@ -9,6 +9,17 @@
   - Testimonials Module for client feedback
   - Common features: validation, pagination, filtering, and documentation
 
+## [0.5.0] - 2024-02-26
+### Added
+- Settings Module Implementation
+  - Created Setting model with fields for key, value, group, type, label, description, and options
+  - Implemented CRUD endpoints with validation for different setting types
+  - Added group-based settings management
+  - Added public/private setting visibility control
+  - Created default settings seeder with company, contact, and social media settings
+  - Added bulk update functionality for efficient settings management
+  - Updated API documentation and Postman collection
+
 ## [0.4.0] - 2024-02-26
 ### Added
 - Products Module Implementation

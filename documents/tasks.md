@@ -129,13 +129,13 @@
         - [✅] Add validation and tests
         - [✅] Update API documentation
 
-    - [ ] Settings Module (Contact Info):
-        - [ ] Create Setting model and migration:
-            - [ ] Fields: key, value, group, type
-        - [ ] Implement settings management endpoints
-        - [ ] Add validation for different setting types
-        - [ ] Create default settings seeder
-        - [ ] Add tests and documentation
+    - [✅] Settings Module (Contact Info):
+        - [✅] Create Setting model and migration:
+            - [✅] Fields: key, value, group, type
+        - [✅] Implement settings management endpoints
+        - [✅] Add validation for different setting types
+        - [✅] Create default settings seeder
+        - [✅] Add tests and documentation
 
     - [ ] Testimonials Module:
         - [ ] Create Testimonial model and migration:

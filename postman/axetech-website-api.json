@@ -1219,6 +1219,356 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Settings",
+            "description": "Settings management endpoints",
+            "item": [
+                {
+                    "name": "List Settings",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/settings?per_page=10&group=contact&public=true",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page"
+                                },
+                                {
+                                    "key": "group",
+                                    "value": "contact",
+                                    "description": "Filter by group",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "public",
+                                    "value": "true",
+                                    "description": "Filter by public visibility",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get paginated list of settings"
+                    }
+                },
+                {
+                    "name": "Get Setting",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Setting ID"
+                                }
+                            ]
+                        },
+                        "description": "Get a specific setting by ID"
+                    }
+                },
+                {
+                    "name": "Create Setting",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"key\": \"support_email\",\n    \"value\": \"support@axetech.io\",\n    \"group\": \"contact\",\n    \"type\": \"email\",\n    \"label\": \"Support Email\",\n    \"description\": \"Email address for support inquiries\",\n    \"is_public\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/settings",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings"
+                            ]
+                        },
+                        "description": "Create a new setting"
+                    }
+                },
+                {
+                    "name": "Update Setting",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"key\": \"support_email\",\n    \"value\": \"help@axetech.io\",\n    \"group\": \"contact\",\n    \"type\": \"email\",\n    \"label\": \"Support Email\",\n    \"description\": \"Updated email address for support inquiries\",\n    \"is_public\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Setting ID to update"
+                                }
+                            ]
+                        },
+                        "description": "Update an existing setting"
+                    }
+                },
+                {
+                    "name": "Delete Setting",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Setting ID to delete"
+                                }
+                            ]
+                        },
+                        "description": "Delete a setting"
+                    }
+                },
+                {
+                    "name": "Get Settings by Group",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/group/:group",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                "group",
+                                ":group"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "group",
+                                    "value": "contact",
+                                    "description": "Settings group name"
+                                }
+                            ]
+                        },
+                        "description": "Get all settings in a specific group"
+                    }
+                },
+                {
+                    "name": "Get Public Settings",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/public/all",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                "public",
+                                "all"
+                            ]
+                        },
+                        "description": "Get all public settings"
+                    }
+                },
+                {
+                    "name": "Bulk Update Settings",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"settings\": [\n        {\n            \"key\": \"contact_email\",\n            \"value\": \"updated@axetech.io\"\n        },\n        {\n            \"key\": \"contact_phone\",\n            \"value\": \"+9876543210\"\n        }\n    ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/settings/bulk/update",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "settings",
+                                "bulk",
+                                "update"
+                            ]
+                        },
+                        "description": "Update multiple settings at once"
+                    }
+                }
+            ]
         }
     ],
     "variable": [
