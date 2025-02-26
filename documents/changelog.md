@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+### Planned
+- CMS Modules Implementation
+  - Services Module for managing service offerings
+  - Products Module for future product teasers
+  - Settings Module for contact information
+  - Testimonials Module for client feedback
+  - Common features: validation, pagination, filtering, and documentation
+
 ## [0.3.0] - 2024-02-26
 ### Added
 - Authentication System Implementation

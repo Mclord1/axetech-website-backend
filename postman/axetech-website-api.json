@@ -451,6 +451,273 @@
             ]
         },
         {
+            "name": "Services",
+            "description": "Service management endpoints",
+            "item": [
+                {
+                    "name": "List Services",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/services?per_page=10&visible=true",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page"
+                                },
+                                {
+                                    "key": "visible",
+                                    "value": "true",
+                                    "description": "Filter by visibility",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get paginated list of services"
+                    }
+                },
+                {
+                    "name": "Get Service",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/services/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Service ID"
+                                }
+                            ]
+                        },
+                        "description": "Get a specific service by ID"
+                    }
+                },
+                {
+                    "name": "Create Service",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Web Development\",\n    \"description\": \"Full-stack web development services\",\n    \"icon\": \"web-icon.svg\",\n    \"image\": \"web-banner.jpg\",\n    \"features\": [\n        \"Custom web applications\",\n        \"E-commerce solutions\",\n        \"API development\"\n    ],\n    \"order\": 1,\n    \"is_visible\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/services",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services"
+                            ]
+                        },
+                        "description": "Create a new service"
+                    }
+                },
+                {
+                    "name": "Update Service",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Updated Web Development\",\n    \"description\": \"Updated full-stack web development services\",\n    \"icon\": \"updated-web-icon.svg\",\n    \"image\": \"updated-web-banner.jpg\",\n    \"features\": [\n        \"Updated custom web applications\",\n        \"Updated e-commerce solutions\",\n        \"Updated API development\"\n    ],\n    \"order\": 2,\n    \"is_visible\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/services/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Service ID to update"
+                                }
+                            ]
+                        },
+                        "description": "Update an existing service"
+                    }
+                },
+                {
+                    "name": "Delete Service",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/services/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Service ID to delete"
+                                }
+                            ]
+                        },
+                        "description": "Delete a service"
+                    }
+                },
+                {
+                    "name": "Update Service Order",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"services\": [\n        {\n            \"id\": 1,\n            \"order\": 2\n        },\n        {\n            \"id\": 2,\n            \"order\": 1\n        }\n    ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/services/order/update",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "services",
+                                "order",
+                                "update"
+                            ]
+                        },
+                        "description": "Update the display order of services"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Admins",
             "description": "Admin management endpoints",
             "item": [
