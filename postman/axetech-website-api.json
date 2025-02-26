@@ -1569,6 +1569,279 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "Testimonials",
+            "description": "Testimonial management endpoints",
+            "item": [
+                {
+                    "name": "List Testimonials",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials?per_page=10&visible=true&rating=5",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials"
+                            ],
+                            "query": [
+                                {
+                                    "key": "per_page",
+                                    "value": "10",
+                                    "description": "Number of items per page"
+                                },
+                                {
+                                    "key": "visible",
+                                    "value": "true",
+                                    "description": "Filter by visibility",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "rating",
+                                    "value": "5",
+                                    "description": "Filter by rating (1-5)",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get paginated list of testimonials"
+                    }
+                },
+                {
+                    "name": "Get Testimonial",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Testimonial ID"
+                                }
+                            ]
+                        },
+                        "description": "Get a specific testimonial by ID"
+                    }
+                },
+                {
+                    "name": "Create Testimonial",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"client_name\": \"John Smith\",\n    \"company\": \"Tech Corp\",\n    \"position\": \"CTO\",\n    \"content\": \"Working with AxeTech has been an amazing experience. Their team delivered exceptional results.\",\n    \"rating\": 5,\n    \"image\": \"john-smith.jpg\",\n    \"order\": 1,\n    \"is_visible\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials"
+                            ]
+                        },
+                        "description": "Create a new testimonial"
+                    }
+                },
+                {
+                    "name": "Update Testimonial",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"client_name\": \"Updated John Smith\",\n    \"company\": \"Updated Tech Corp\",\n    \"position\": \"CEO\",\n    \"content\": \"Updated: Working with AxeTech has been an amazing experience. Their team delivered exceptional results.\",\n    \"rating\": 5,\n    \"image\": \"updated-john-smith.jpg\",\n    \"order\": 2,\n    \"is_visible\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Testimonial ID to update"
+                                }
+                            ]
+                        },
+                        "description": "Update an existing testimonial"
+                    }
+                },
+                {
+                    "name": "Delete Testimonial",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "Testimonial ID to delete"
+                                }
+                            ]
+                        },
+                        "description": "Delete a testimonial"
+                    }
+                },
+                {
+                    "name": "Update Testimonial Order",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"testimonials\": [\n        {\n            \"id\": 1,\n            \"order\": 2\n        },\n        {\n            \"id\": 2,\n            \"order\": 1\n        }\n    ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/testimonials/order/update",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "testimonials",
+                                "order",
+                                "update"
+                            ]
+                        },
+                        "description": "Update the display order of testimonials"
+                    }
+                }
+            ]
         }
     ],
     "variable": [
