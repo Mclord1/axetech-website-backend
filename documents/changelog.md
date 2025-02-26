@@ -1,5 +1,24 @@
 # Changelog
 
+## [Unreleased]
+### Planned
+- CMS Modules Implementation
+  - Services Module for managing service offerings
+  - Products Module for future product teasers
+  - Settings Module for contact information
+  - Testimonials Module for client feedback
+  - Common features: validation, pagination, filtering, and documentation
+
+## [0.4.0] - 2024-02-26
+### Added
+- Products Module Implementation
+  - Created Product model with fields for name, slug, description, image, features, status, launch_date, and teaser_content
+  - Implemented CRUD endpoints with validation and file cleanup
+  - Added status management (draft, coming_soon, published)
+  - Added launch date scheduling and teaser content for upcoming products
+  - Added order management and visibility control
+  - Updated API documentation and Postman collection
+
 ## [0.3.0] - 2024-02-26
 ### Added
 - Authentication System Implementation
