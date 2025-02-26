@@ -6,6 +6,8 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\AdminPasswordResetController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,7 @@ use App\Http\Controllers\Auth\AdminPasswordResetController;
 | Current API Structure:
 | /api/auth/* - Authentication endpoints
 | /api/projects/* - Project endpoints (protected)
+| /api/services/* - Service endpoints (protected)
 | /api/admins/* - Admin management endpoints (protected)
 |
 */
@@ -46,6 +49,30 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get(RouteConstants::PROJECT_PARAM, 'show')->name('projects.show');
             Route::put(RouteConstants::PROJECT_PARAM, 'update')->name('projects.update');
             Route::delete(RouteConstants::PROJECT_PARAM, 'destroy')->name('projects.destroy');
+        });
+
+    // Services Module
+    Route::controller(ServiceController::class)
+        ->prefix('services')
+        ->group(function () {
+            Route::get('/', 'index')->name('services.index');
+            Route::post('/', 'store')->name('services.store');
+            Route::get('/{service}', 'show')->name('services.show');
+            Route::put('/{service}', 'update')->name('services.update');
+            Route::delete('/{service}', 'destroy')->name('services.destroy');
+            Route::put('/order/update', 'updateOrder')->name('services.order.update');
+        });
+
+    // Products Module
+    Route::controller(ProductController::class)
+        ->prefix('products')
+        ->group(function () {
+            Route::get('/', 'index')->name('products.index');
+            Route::post('/', 'store')->name('products.store');
+            Route::get('/{product}', 'show')->name('products.show');
+            Route::put('/{product}', 'update')->name('products.update');
+            Route::delete('/{product}', 'destroy')->name('products.destroy');
+            Route::put('/order/update', 'updateOrder')->name('products.order.update');
         });
 
     // Admins Module
