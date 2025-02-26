@@ -3,6 +3,9 @@
 use App\Constants\RouteConstants;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\AdminPasswordResetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +17,26 @@ use App\Http\Controllers\ProjectController;
 | be assigned to the "api" middleware group. Make something great!
 |
 | Current API Structure:
-| /api/v1/projects - Project endpoints
+| /api/auth/* - Authentication endpoints
+| /api/projects/* - Project endpoints (protected)
+| /api/admins/* - Admin management endpoints (protected)
 |
 */
 
+// Public Routes
+Route::post('/auth/login', [AdminAuthController::class, 'login'])->name('auth.login');
+Route::post('/auth/forgot-password', [AdminPasswordResetController::class, 'sendResetLinkEmail'])->name('auth.password.email');
+Route::post('/auth/reset-password', [AdminPasswordResetController::class, 'reset'])->name('auth.password.reset');
 
-Route::middleware('api')->group(function () {
+// Protected Routes
+Route::middleware(['auth:sanctum'])->group(function () {
+    // Auth Module
+    Route::prefix('auth')->group(function () {
+        Route::post('/logout', [AdminAuthController::class, 'logout'])->name('auth.logout');
+        Route::get('/profile', [AdminAuthController::class, 'profile'])->name('auth.profile');
+        Route::put('/profile', [AdminAuthController::class, 'updateProfile'])->name('auth.profile.update');
+    });
+
     // Projects Module
     Route::controller(ProjectController::class)
         ->prefix('projects')
@@ -30,4 +47,7 @@ Route::middleware('api')->group(function () {
             Route::put(RouteConstants::PROJECT_PARAM, 'update')->name('projects.update');
             Route::delete(RouteConstants::PROJECT_PARAM, 'destroy')->name('projects.destroy');
         });
+
+    // Admins Module
+    Route::apiResource('admins', AdminController::class);
 });
